@@ -14,6 +14,6 @@ class OutletMapController extends Controller
      */
     public function index(Request $request)
     {
-        return view('outlets.map');
+        return view('lokasi_parkir.map');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Outlet;
+use App\lokasi_parkir;
 use Illuminate\Http\Request;
 
 class OutletController extends Controller
@@ -14,11 +14,11 @@ class OutletController extends Controller
      */
     public function index()
     {
-        $this->authorize('manage_outlet');
+        $this->authorize('manage_lokasi_rambu');
 
-        $outletQuery = Outlet::query();
-        $outletQuery->where('name', 'like', '%'.request('q').'%');
-        $outlets = $outletQuery->paginate(25);
+        $lokasi_parkir = lokasi_parkir::query();
+        $lokasi_parkir->where('name', 'like', '%'.request('q').'%');
+        $lokasi_parkir = $lokasi_parkir->paginate(25);
 
         return view('outlets.index', compact('outlets'));
     }
@@ -30,9 +30,9 @@ class OutletController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', new Outlet);
+        $this->authorize('create', new loasi_parkir);
 
-        return view('outlets.create');
+        return view('lokasi_parkir.create');
     }
 
     /**
@@ -43,19 +43,19 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create', new Outlet);
+        $this->authorize('create', new lokasi_parkir);
 
-        $newOutlet = $request->validate([
+        $lokasi_parkir = $request->validate([
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
-        $newOutlet['creator_id'] = auth()->id();
+        $lokasi_parkir['creator_id'] = auth()->id();
 
-        $outlet = Outlet::create($newOutlet);
+        $lokasi_parkir = lokasi_parkir::create($lokasi_parkir);
 
-        return redirect()->route('outlets.show', $outlet);
+        return redirect()->route('lokasi_parkir.show', $lokasi_parkir);
     }
 
     /**
@@ -64,9 +64,10 @@ class OutletController extends Controller
      * @param  \App\Outlet  $outlet
      * @return \Illuminate\View\View
      */
-    public function show(Outlet $outlet)
+    public function show( $id)
     {
-        return view('outlets.show', compact('outlet'));
+        $lokasi_parkir =lokasi_parkir::findOrFail($id);
+        return view('lokasi_parkir.show', compact('lokasi_parkir'));
     }
 
     /**
@@ -75,11 +76,11 @@ class OutletController extends Controller
      * @param  \App\Outlet  $outlet
      * @return \Illuminate\View\View
      */
-    public function edit(Outlet $outlet)
+    public function edit(lokasi_parkir $lokasi_parkir)
     {
-        $this->authorize('update', $outlet);
+        $this->authorize('update', $lokasi_parkir);
 
-        return view('outlets.edit', compact('outlet'));
+        return view('lokasi_parkir.edit', compact('lokasi_parkir'));
     }
 
     /**
@@ -89,19 +90,19 @@ class OutletController extends Controller
      * @param  \App\Outlet  $outlet
      * @return \Illuminate\Routing\Redirector
      */
-    public function update(Request $request, Outlet $outlet)
+    public function update(Request $request, lokasi_parkir $lokasi_parkir)
     {
-        $this->authorize('update', $outlet);
+        $this->authorize('update', $lokasi_parkir);
 
-        $outletData = $request->validate([
+        $lokasi_parkir = $request->validate([
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
-        $outlet->update($outletData);
+        $lokasi_parkir->update($lokasi_parkir);
 
-        return redirect()->route('outlets.show', $outlet);
+        return redirect()->route('lokasi_parkir.show', $lokasi_parkir);
     }
 
     /**
@@ -111,14 +112,14 @@ class OutletController extends Controller
      * @param  \App\Outlet  $outlet
      * @return \Illuminate\Routing\Redirector
      */
-    public function destroy(Request $request, Outlet $outlet)
+    public function destroy(Request $request, lokasi_parkir $lokasi_parkir)
     {
-        $this->authorize('delete', $outlet);
+        $this->authorize('delete', $lokasi_parkir);
 
-        $request->validate(['outlet_id' => 'required']);
+        $request->validate(['lokasi_parkir_id' => 'required']);
 
-        if ($request->get('outlet_id') == $outlet->id && $outlet->delete()) {
-            return redirect()->route('outlets.index');
+        if ($request->get('lokasi_parkir_id') == $lokasi_parkir->id && $lokasi_parkir->delete()) {
+            return redirect()->route('lokasi_parkir.index');
         }
 
         return back();

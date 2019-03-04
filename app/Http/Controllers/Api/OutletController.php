@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Outlet;
+use App\lokasi_parkir;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Outlet as OutletResource;
+use App\Http\Resources\lokasi_parkir as lokasi_parkirResource;
 
 class OutletController extends Controller
 {
@@ -17,22 +17,21 @@ class OutletController extends Controller
      */
     public function index(Request $request)
     {
-        $outlets = Outlet::all();
+        $lokasi_parkir = lokasi_parkir::all();
 
-        $geoJSONdata = $outlets->map(function ($outlet) {
+        $geoJSONdata = $lokasi_parkir->map(function ($lokasi_parkir) {
             return [
                 'type'       => 'Feature',
-                'properties' => new OutletResource($outlet),
+                'properties' => new lokasi_parkirResource($lokasi_parkir),
                 'geometry'   => [
                     'type'        => 'Point',
                     'coordinates' => [
-                        $outlet->longitude,
-                        $outlet->latitude,
+                        $lokasi_parkir->longitude,
+                        $lokasi_parkir->latitude,
                     ],
                 ],
             ];
         });
-
         return response()->json([
             'type'     => 'FeatureCollection',
             'features' => $geoJSONdata,

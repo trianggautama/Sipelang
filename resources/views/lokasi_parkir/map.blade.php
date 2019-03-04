@@ -12,7 +12,9 @@
     crossorigin=""/>
 
 <style>
-    #mapid { min-height: 500px; }
+    #mapid { 
+        min-height: 550px;
+         }
 </style>
 @endsection
 @push('scripts')
@@ -25,11 +27,11 @@
     var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }}, {{ config('leaflet.map_center_longitude') }}], {{ config('leaflet.zoom_level') }});
     var baseUrl = "{{ url('/') }}";
 
-    L.tileLayer('/images/marker-icon.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    axios.get('{{ route('api.outlets.index') }}')
+    axios.get('{{ route('api.lokasi_parkir.index') }}')
     .then(function (response) {
         console.log(response.data);
         L.geoJSON(response.data, {
@@ -45,7 +47,7 @@
         console.log(error);
     });
 
-    @can('create', new App\Outlet)
+    @can('create', new App\lokasi_parkir)
     var theMarker;
 
     map.on('click', function(e) {
@@ -57,7 +59,7 @@
         };
 
         var popupContent = "Your location : " + latitude + ", " + longitude + ".";
-        popupContent += '<br><a href="{{ route('outlets.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">Add new outlet here</a>';
+        popupContent += '<br><a href="{{ route('outlite.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">tambah lokasi parkir</a>';
 
         theMarker = L.marker([latitude, longitude]).addTo(map);
         theMarker.bindPopup(popupContent)
