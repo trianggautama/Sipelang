@@ -12,9 +12,15 @@ class lokasi_parkir extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'address', 'latitude', 'longitude','gambar', 'creator_id',
+        'jukir_id','zona_id', 'address', 'latitude', 'longitude','creator_id',
     ];
 
+    public function jukir(){
+        return $this->belongsTo('App\jukir');
+      }
+    public function zona(){
+        return $this->belongsTo('App\zona');
+      }
     /**
      * The accessors to append to the model's array form.
      *
@@ -32,11 +38,11 @@ class lokasi_parkir extends Model
     public function getNameLinkAttribute()
     {
         $title = __('app.show_detail_title', [
-            'name' => $this->name, 'type' => __('lokasi_parkir.lokasi_parkir'),
+            'address' => $this->address, 'type' => __('lokasi_parkir.lokasi_parkir'),
         ]);
         $link = '<a href="'.route('outlets.show', $this).'"';
         $link .= ' title="'.$title.'">';
-        $link .= $this->name;
+        $link .= $this->address;
         $link .= '</a>';
 
         return $link;
@@ -72,7 +78,7 @@ class lokasi_parkir extends Model
     public function getMapPopupContentAttribute()
     {
         $mapPopupContent = '';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('lokasi_parkir.name').':</strong><br>'.$this->name_link.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('lokasi_parkir.address').':</strong><br>'.$this->name_link.'</div>';
         $mapPopupContent .= '<div class="my-2"><strong>'.__('lokasi_parkir.coordinate').':</strong><br>'.$this->coordinate.'</div>';
 
         return $mapPopupContent;

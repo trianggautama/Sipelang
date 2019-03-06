@@ -15,14 +15,14 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                        <img class=" img-responsive" style="width:100%; height:auto; margin-bottom:20px;" src="{{asset('/images/'.$lokasi_parkir->gambar)}}">
+                        <img class=" img-responsive" style="width:80%; height:auto; margin-bottom:20px;" src="{{asset('/images/foto_jukir/'.$lokasi_parkir->jukir->gambar)}}">
                 </div>
                 <table class="table table-sm">
                     <tbody>
-                        <tr><td>Nama Jukir</td><td>{{ $lokasi_parkir->name }}</td></tr>
+                        <tr><td>Nama Jukir</td><td>{{ $lokasi_parkir->jukir->nama }}</td></tr>
+                        <tr><td>No Hp</td><td>{{ $lokasi_parkir->jukir->no_hp }}</td></tr>
+                        <tr><td>Kode Zona</td><td>{{ $lokasi_parkir->zona->kode }}</td></tr>
                         <tr><td>Lokasi Parkir</td><td>{{ $lokasi_parkir->address }}</td></tr>
-                        <tr><td>Latitude</td><td>{{ $lokasi_parkir->latitude }}</td></tr>
-                        <tr><td>Longitude</td><td>{{ $lokasi_parkir->longitude }}</td></tr>
                     </tbody>
                 </table>
             </div>

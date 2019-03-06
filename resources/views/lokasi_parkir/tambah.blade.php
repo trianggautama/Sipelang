@@ -10,14 +10,25 @@
             <form method="POST" action="" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="name" class="control-label">Nama Jukir</label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
-                        {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
-                    </div>
+                        <div class="form-group">
+                                <p>Juru Parkir</p>
+                                    <select class="form-control" name="jukir_id">
+                                    @foreach($jukir as $j)
+                                      <option value="{{$j->id}}">{{$j->nama}}</option>
+                                    @endforeach
+                                    </select>
+                  </div>
+                  <div class="form-group">
+                        <p>Zona Parkir</p>
+                            <select class="form-control" name="zona_id">
+                            @foreach($zona as $z)
+                              <option value="{{$z->id}}">{{$z->keterangan}}</option>
+                            @endforeach
+                            </select>
+                  </div>
                     <div class="form-group">
                         <label for="address" class="control-label">Alamat</label>
-                        <textarea id="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="alamat" rows="4">{{ old('address') }}</textarea>
+                        <textarea id="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" rows="4">{{ old('address') }}</textarea>
                         {!! $errors->first('address', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">

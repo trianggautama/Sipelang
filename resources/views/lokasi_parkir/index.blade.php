@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th>Nama Jukir</th>
+                        <th>Kode Zona</th>
                         <th>Lokasi</th>
                         <th>{{ __('outlet.latitude') }}</th>
                         <th>{{ __('outlet.longitude') }}</th>
@@ -33,7 +34,8 @@
                 <tbody>
                     @foreach($lokasi_parkir as $key => $lp)
                     <tr>
-                        <td>{{ $lp->name }}</td>
+                        <td>{{ $lp->jukir->nama }}</td>
+                        <td>{{ $lp->zona->kode }}</td>
                         <td>{{ $lp->address }}</td>
                         <td>{{ $lp->latitude }}</td>
                         <td>{{ $lp->longitude }}</td>
