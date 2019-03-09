@@ -46,8 +46,8 @@ class jukirController extends Controller
     }
 
     public function detail( $id ){
-        dd('detail belum dibuat :)');
-    }
+        $jukir =jukir::findOrFail($id);
+        return view('jukir.show', compact('jukir'));    }
 
     public function hapus   ( $id ){
         $jukir=jukir::findOrFail($id);

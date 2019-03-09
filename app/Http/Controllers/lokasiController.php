@@ -12,8 +12,9 @@ class lokasiController extends Controller
 
     public function index(){
       $lokasi_parkir = lokasi_parkir::all();
+      $zona = zona::all();
 
-      return view('lokasi_parkir.index', compact('lokasi_parkir'));
+      return view('lokasi_parkir.index', compact('lokasi_parkir','zona'));
     }
 
     public function tambah(){

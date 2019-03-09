@@ -12,16 +12,17 @@
 <div class="row">
     <div class="col-md-12">
         <h3>
-            Data Juru Parkir
+            Data Juru Parkir <small>({{$jukir->count()}} Jukir)</small>
         </h3>
         <a href="##tambahdata" data-toggle="modal"data-target="#tambahdata" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
 
-        <div class="card">
+        <div class="card" style="padding:20px;">
 
-            <table class="table table-responsive-sm">
+            <table class="table table-responsive-sm" id="myTable">
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Zona Parkir</th>
                         <th> Nama</th>
                         <th>No Hp</th>
                         <th class="text-center">{{ __('app.action') }}</th>
@@ -35,6 +36,7 @@
 
                     <tr>
                     <td>{{$no++}}</td>
+                    <td>{{$j->lokasi_parkir->zona->kode}}</td>
                     <td>{{$j->nama}}</td>
                     <td>{{$j->no_hp}}</td>
 

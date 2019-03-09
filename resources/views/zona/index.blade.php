@@ -12,13 +12,13 @@
 <div class="row">
     <div class="col-md-12">
         <h3>
-            Zona Lokasi Parkir
+            Zona Lokasi Parkir <small>({{$zona->count()}} Zona)</small>
         </h3>
         <a href="##tambahdata" data-toggle="modal"data-target="#tambahdata" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
 
-        <div class="card">
+        <div class="card" style="padding:20px">
 
-            <table class="table table-responsive-sm">
+            <table class="table table-responsive-sm" id="myTable">
                 <thead>
                     <tr>
                         <th>No</th>

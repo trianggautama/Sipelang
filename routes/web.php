@@ -15,8 +15,10 @@ Route::get('/', 'OutletMapController@index');
 
 Auth::routes();
 
+//lokasi parkir
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/data-lokasi', 'lokasiController@index')->name('index');
+Route::post('/data-lokasi', 'lokasiController@filter')->name('lokasi-filter');
 Route::get('/tambah', 'lokasiController@tambah')->name('tambah-lokasi');
 Route::post('/tambah', 'lokasiController@store')->name('tambah-lokasi');
 Route::get('/{id}/show', 'lokasiController@show')->name('show-lokasi');
@@ -42,6 +44,6 @@ Route::post('/jukir', 'jukirController@tambah')->name('tambah-jukir');
 Route::get('/{id}/jukir-edit', 'jukirController@edit')->name('edit-jukir');
 Route::post('/{id}/jukir-edit', 'jukirController@update')->name('update-jukir');
 Route::get('/{id}/jukir-hapus', 'jukirController@hapus')->name('hapus-jukir');
-Route::get('/{id}/detail', 'zonaController@detail')->name('detail-zona');
+Route::get('/{id}/detail', 'jukirController@detail')->name('detail-zona');
 
 

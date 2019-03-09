@@ -13,4 +13,8 @@ class jukir extends Model
         'nama', 'no_hp','gambar',
     ];
 
+    public function lokasi_parkir(){
+        return $this->hasOne('App\lokasi_parkir');
+      }
+
 }

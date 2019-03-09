@@ -3,24 +3,23 @@
 @section('title', __('outlet.list'))
 
 @section('content')
-<div class="mb-3">
-    <div class="float-right">
-        @can('create', new App\lokasi_parkir)
-            <a href="{{ route('outlets.create') }}" class="btn btn-success">{{ __('outlet.create') }}</a>
-        @endcan
-    </div>
-</div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin-bottom:15px;">
         <h3>
-            Data Lokasi Parkir
+            Data Lokasi Parkir <small>({{$lokasi_parkir->count()}} Lokasi)</small>
         </h3>
-        <a href="{{ route('tambah-lokasi') }}" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
+    </div>
+        <div class="col-md-9">
+                <a href="{{ route('tambah-lokasi') }}" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
 
-        <div class="card">
+        </div>
 
-            <table class="table table-responsive-sm">
+                <div class="col-md-12">
+
+        <div class="card" style="padding:20px;">
+
+            <table class="table table-responsive-sm" id="myTable">
                 <thead>
                     <tr>
                         <th>Nama Jukir</th>
