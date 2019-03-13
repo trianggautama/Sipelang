@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\zona;
 
 class OutletMapController extends Controller
 {
@@ -14,6 +15,7 @@ class OutletMapController extends Controller
      */
     public function index(Request $request)
     {
-        return view('lokasi_parkir.map');
+        $zona = zona::all();
+        return view('lokasi_parkir.map',compact('zona'));
     }
 }

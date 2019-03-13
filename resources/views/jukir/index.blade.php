@@ -14,7 +14,7 @@
         <h3>
             Data Juru Parkir <small>({{$jukir->count()}} Jukir)</small>
         </h3>
-        <a href="##tambahdata" data-toggle="modal"data-target="#tambahdata" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
+        <a href="##tambahdata" data-toggle="modal"data-target="#tambahdata" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Juru Parkir  </a>
 
         <div class="card" style="padding:20px;">
 
@@ -22,7 +22,6 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Zona Parkir</th>
                         <th> Nama</th>
                         <th>No Hp</th>
                         <th class="text-center">{{ __('app.action') }}</th>
@@ -36,12 +35,10 @@
 
                     <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$j->lokasi_parkir->zona->kode}}</td>
                     <td>{{$j->nama}}</td>
                     <td>{{$j->no_hp}}</td>
 
                         <td class="text-center">
-                            <a href="{{ route('detail-zona', ['id'=>$j->id]) }}" class="btn btn-sm btn-secondary" >Info</a>
                             <a href="{{ route('edit-jukir', ['id'=>$j->id]) }}" class="btn btn-sm btn-primary " >Ubah</a>
                             <a href="{{ route('hapus-jukir', ['id'=>$j->id]) }}" class="btn btn-sm btn-danger" >Hapus</a>
 

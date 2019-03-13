@@ -1,6 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<div style="margin-bottom:10px;" class="row">
+    <div class="col-md-6">
+            <form action="post">
+                    <select name="zona" id="" class="form-control">
+                        <option value="">Semua Zona Lokasi</option>
+                        @foreach ($zona as $z)
+                    <option value="{{$z->id}}">{{$z->keterangan}}</option>
+                        @endforeach
+                    </select>
+
+    </div>
+    <div class="col-md-6">
+    <input type="submit" class="btn btn-primary" value="filter zona Lokasi">
+    </div>
+</form>
+</div>
 <div class="card">
     <div class="card-body" id="mapid"></div>
 </div>
@@ -12,7 +28,7 @@
     crossorigin=""/>
 
 <style>
-    #mapid { 
+    #mapid {
         min-height: 550px;
          }
 </style>

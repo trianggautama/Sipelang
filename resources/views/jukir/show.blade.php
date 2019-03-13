@@ -21,8 +21,6 @@
                     <tbody>
                         <tr><td>Nama Jukir</td><td>{{ $jukir->nama }}</td></tr>
                         <tr><td>No Hp</td><td>{{ $jukir->no_hp }}</td></tr>
-                        <tr><td>Kode Zona</td><td>{{ $jukir->lokasi_parkir->zona->kode }}</td></tr>
-                        <tr><td>Lokasi Parkir</td><td>{{ $jukir->lokasi_parkir->address }}</td></tr>
                     </tbody>
                 </table>
             </div>

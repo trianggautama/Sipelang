@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-header">
                 Detail Lokasi
@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                        <img class=" img-responsive" style="width:80%; height:auto; margin-bottom:20px;" src="{{asset('/images/foto_jukir/'.$lokasi_parkir->jukir->gambar)}}">
+                        <img class=" img-responsive" style="width:90%; height:auto; margin-bottom:20px;" src="{{asset('/images/foto_jukir/'.$lokasi_parkir->jukir->gambar)}}">
                 </div>
                 <table class="table table-sm">
                     <tbody>
@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">{{ trans('outlet.location') }}</div>
+            <div class="card-header">Lokasi Parkir</div>
             @if ($lokasi_parkir->coordinate)
             <div class="card-body" id="mapid"></div>
             @else

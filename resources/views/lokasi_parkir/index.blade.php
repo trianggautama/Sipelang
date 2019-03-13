@@ -11,8 +11,8 @@
         </h3>
     </div>
         <div class="col-md-9">
-                <a href="{{ route('tambah-lokasi') }}" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Data  </a>
-
+                <a href="{{ route('tambah-lokasi') }}" class="btn btn-sm btn-success" style="margin-bottom:15px;">Tambah Lokasi Parkir  </a>
+                <a href="" class="btn btn-sm btn-primary" style="margin-bottom:15px;"> <i class="fas fa-user"></i> Cetak Laporan </a>
         </div>
 
                 <div class="col-md-12">
